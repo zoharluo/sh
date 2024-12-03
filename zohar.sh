@@ -9,7 +9,8 @@ zohar_sh(){
     # 输出菜单选项
     echo "1. 安装 WARP"
     echo "2. 安装 WARP"
-    echo "3. 退出"
+    echo "3. 删除别名"
+    echo "4. 退出"
     # 读取用户输入
     read -e -p "请输入你的选择: " choice
     # 根据用户输入执行对应操作
@@ -23,6 +24,9 @@ zohar_sh(){
         echo "选项 2 尚未实现。" 
         ;; 
       3)
+        remove_alias
+        ;;
+      4)
         echo "退出程序..."
         break
         ;;
@@ -31,6 +35,26 @@ zohar_sh(){
         ;;
     esac
   done
+}
+
+# 删除别名
+remove_alias(){
+  # 定义要删除的别名
+  ALIAS_Z="alias z='$SCRIPT_PATH'"
+  ALIAS_ZOHAR="alias zohar='$SCRIPT_PATH'"
+  
+  # 从 ~/.bashrc 中删除别名
+  sed -i "\|$ALIAS_Z|d" ~/.bashrc
+  sed -i "\|$ALIAS_ZOHAR|d" ~/.bashrc
+  
+  # 取消当前 shell 中的别名
+  unalias z 2>/dev/null
+  unalias zohar 2>/dev/null
+  
+  echo "已删除 z 和 zohar 别名。"
+  
+  # 重新加载 ~/.bashrc 以确保更改生效
+  source ~/.bashrc
 }
 
 # 嵌入 alias 并使其生效
