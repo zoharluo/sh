@@ -43,8 +43,8 @@ add_alias(){
     echo "$ALIAS_ZOHAR" >> ~/.bashrc
     echo "z,zohar添加到快速启动脚本。"
     # 立即生效
-    source ~/.bashrc
   fi
+  source ~/.bashrc
 }
 
 # 添加别名
