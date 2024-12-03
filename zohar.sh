@@ -69,12 +69,14 @@ add_alias(){
     echo "$ALIAS_ZOHAR" >> ~/.bashrc
     echo "z,zohar 添加到快速启动脚本。"
   fi
-
+  
   # 立即在当前 shell 中创建别名
   alias z="$SCRIPT_PATH"
   alias zohar="$SCRIPT_PATH"
 }
 
+# 确保脚本有执行权限
+chmod +x "$0"
 
 # 添加别名
 add_alias
