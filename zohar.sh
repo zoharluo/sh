@@ -38,13 +38,8 @@ common_scripts() {
   echo "  0. 返回上一级"
   read -p "请输入选择: " sub_choice
   case $sub_choice in
-    1) 
-ipv4=$(curl -s ip.sb -4)
-ipv6=$(curl -s ip.me -6)
-echo -e "查询结果：\nIPv4: $ipv4\nIPv6: $ipv6"
-read -p "按回车键返回菜单" 
-common_scripts ;;
-    2) clear ;wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh ;;
+    1) clear; ipv4=$(curl -s ip.sb -4) && ipv6=$(curl -s ip.me -6) && echo -e "查询结果：\nIPv4: $ipv4\nIPv6: $ipv6" && read -p "按回车键返回菜单" && common_scripts ;;
+    2) clear ;wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh && read -p "按回车键返回菜单" && common_scripts ;;
     3) clear ;wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh ;;
     4) clear ;sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/gai.conf ;;
     5) clear ;sed -i 's/precedence ::ffff:0:0\/96  100/#precedence ::ffff:0:0\/96  100/' /etc/gai.conf ;;
@@ -92,17 +87,17 @@ test_scripts() {
   echo "  0. 返回上一级"
   read -p "请输入选择: " sub_choice
   case $sub_choice in
-    1) clear ;bash <(wget -qO- --no-check-certificate https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh) && echo -e "清理完成\n按回车返回菜单..."; read ;;
-    2) clear ;bash <(curl -L -s check.unlock.media) && echo -e "清理完成\n按回车返回菜单..."; read ;;
-    3) clear ;bash <(curl -sL Media.Check.Place) && echo -e "清理完成\n按回车返回菜单..."; read ;;
-    4) clear ;bash <(curl -L -s https://github.com/1-stream/RegionRestrictionCheck/raw/main/check.sh) && echo -e "清理完成\n按回车返回菜单..."; read ;;
-    5) clear ;bash <(curl -sL IP.Check.Place) && echo -e "清理完成\n按回车返回菜单..."; read ;;
-    6) clear ;bash <(curl -sL bash.icu/speedtest) && echo -e "清理完成\n按回车返回菜单..."; read ;;
-    7) clear ;bash <(curl -sL res.yserver.ink/taier.sh) && echo -e "清理完成\n按回车返回菜单..."; read ;;
-    8) clear ;bash <(curl -Lso- https://bench.im/hyperspeed) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    1) clear ;bash <(wget -qO- --no-check-certificate https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh) && read -p "按回车键返回菜单" && test_scripts ;;
+    2) clear ;bash <(curl -L -s check.unlock.media) && && read -p "按回车键返回菜单" && test_scripts;;
+    3) clear ;bash <(curl -sL Media.Check.Place) && && read -p "按回车键返回菜单" && test_scripts;;
+    4) clear ;bash <(curl -L -s https://github.com/1-stream/RegionRestrictionCheck/raw/main/check.sh) && && read -p "按回车键返回菜单" && test_scripts;;
+    5) clear ;bash <(curl -sL IP.Check.Place) && && read -p "按回车键返回菜单" && test_scripts;;
+    6) clear ;bash <(curl -sL bash.icu/speedtest) && && read -p "按回车键返回菜单" && test_scripts;;
+    7) clear ;bash <(curl -sL res.yserver.ink/taier.sh) && && read -p "按回车键返回菜单" && test_scripts;;
+    8) clear ;bash <(curl -Lso- https://bench.im/hyperspeed) && && read -p "按回车键返回菜单" && test_scripts;;
     9) clear ;curl -sL network-speed.xyz | bash  && echo -e "清理完成\n按回车返回菜单..."; read;;
-    10) clear ;bash <(curl -sSL https://raw.githubusercontent.com/ludashi2020/backtrace/main/install.sh) && echo -e "清理完成\n按回车返回菜单..."; read ;;
-    11) clear ;wget -N --no-check-certificate https://raw.githubusercontent.com/Chennhaoo/Shell_Bash/master/AutoTrace.sh && chmod +x AutoTrace.sh && bash AutoTrace.sh && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    10) clear ;bash <(curl -sSL https://raw.githubusercontent.com/ludashi2020/backtrace/main/install.sh) && && read -p "按回车键返回菜单" && test_scripts;;
+    11) clear ;wget -N --no-check-certificate https://raw.githubusercontent.com/Chennhaoo/Shell_Bash/master/AutoTrace.sh && chmod +x AutoTrace.sh && bash AutoTrace.sh && && read -p "按回车键返回菜单" && test_scripts;;
     0) clear ;main_menu ;;
     *) echo "输入错误，请按回车键重试"; read; test_scripts ;;
   esac
@@ -162,11 +157,11 @@ system_functions() {
   read -p "请输入选择: " sub_choice
   case $sub_choice in
     1) clear ; bash <(curl -sL yabs.sh) ;;
-    2) clear ; apt-get autoremove -y && apt-get clean && echo "清理完成" && echo -e "清理完成\n按回车返回菜单..."; read;;
-    3) clear ; apt-get update && apt-get upgrade -y && echo "更新完成" && echo -e "更新完成\n按回车返回菜单..."; read;;
-    4) apt update -y  && apt upgrade -y && apt install -y curl  && apt-get install sudo && apt install wget && apt install net-tools && apt install ufw && echo "安装完成" && echo -e "安装完成\n按回车返回菜单..."; read;;
-	  5) clear ; add_alias && echo -e "\n按回车返回菜单..."; read;;
-	  6) clear ; remove_alias && echo -e "\n按回车返回菜单..."; read;;
+    2) clear ; apt-get autoremove -y && apt-get clean && echo "清理完成" && read -p "按回车键返回菜单" && system_functions ;;
+    3) clear ; apt-get update && apt-get upgrade -y && echo "更新完成" && read -p "按回车键返回菜单" && system_functions ;;
+    4) apt update -y  && apt upgrade -y && apt install -y curl  && apt-get install sudo && apt install wget && apt install net-tools && apt install ufw && echo "安装完成" && read -p "按回车键返回菜单" && system_functions ;;
+	  5) clear ; add_alias && read -p "按回车键返回菜单" && system_functions ;;
+	  6) clear ; remove_alias && read -p "按回车键返回菜单" && system_functions ;;
     0) main_menu ;;
     *) echo "输入错误，请按回车键重试"; read; system_functions ;;
   esac
