@@ -163,7 +163,7 @@ system_functions() {
 	  5) clear ; add_alias && read -p "按回车键返回菜单" && system_functions ;;
 	  6) clear ; remove_alias && read -p "按回车键返回菜单" && system_functions ;;
     0) main_menu ;;
-    *) echo "输入错误，请按回车键重试"; read; system_functions ;;
+    *) echo "输入错误，请按回车键重试"; read; system_functions ;;123
   esac
 }
 
