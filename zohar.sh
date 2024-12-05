@@ -5,13 +5,13 @@ SCRIPT_PATH="$(realpath "$0")"
 main_menu() {
   clear
   echo "==================== 一键脚本菜单 ===================="
-  echo "1.       常用功能脚本"
-  echo "2.       代理相关脚本"
-  echo "6.       测试脚本合集"
-  echo "7.       综合功能脚本"
-  echo "8.       一键安装常用环境及软件"
-  echo "9.       系统功能"
-  echo "0.       退出"
+  echo "1. 常用功能脚本"
+  echo "2. 代理相关脚本"
+  echo "6. 测试脚本合集"
+  echo "7. 综合功能脚本"
+  echo "8. 一键安装常用环境及软件"
+  echo "9. 系统功能"
+  echo "0. 退出"
   echo "====================================================="
   read -p "请输入对应数字选择分类: " choice
   case $choice in
@@ -26,24 +26,24 @@ main_menu() {
   esac
 }
 
-# 1.       常用功能脚本
+# 1. 常用功能脚本
 common_scripts() {
   clear
-  echo "▶      常用功能脚本:"
-  echo "  1.       查询IP (IPv4 和 IPv6)"
-  echo "  2.       添加SWAP"
-  echo "  3.       多功能BBR安装脚本"
-  echo "  4.       设置IPv4优先"
-  echo "  5.       设置IPv6优先"
-  echo "  0.       返回上一级"
+  echo "▶常用功能脚本:"
+  echo "  1. 查询IP (IPv4 和 IPv6)"
+  echo "  2. 添加SWAP"
+  echo "  3. 多功能BBR安装脚本"
+  echo "  4. 设置IPv4优先"
+  echo "  5. 设置IPv6优先"
+  echo "  0. 返回上一级"
   read -p "请输入选择: " sub_choice
   case $sub_choice in
     1) 
-      ipv4=$(curl -s ip.sb -4)
-      ipv6=$(curl -s ip.me -6)
-      echo -e "查询结果：\nIPv4: $ipv4\nIPv6: $ipv6"
-      read -p "按回车键返回菜单" 
-      common_scripts ;;
+ipv4=$(curl -s ip.sb -4)
+ipv6=$(curl -s ip.me -6)
+echo -e "查询结果：\nIPv4: $ipv4\nIPv6: $ipv6"
+read -p "按回车键返回菜单" 
+common_scripts ;;
     2) clear ;wget https://www.moerats.com/usr/shell/swap.sh && bash swap.sh ;;
     3) clear ;wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh ;;
     4) clear ;sed -i 's/#precedence ::ffff:0:0\/96  100/precedence ::ffff:0:0\/96  100/' /etc/gai.conf ;;
@@ -54,15 +54,15 @@ common_scripts() {
 }
 
 
-# 2.       代理相关脚本
+# 2. 代理相关脚本
 proxy_scripts() {
   clear
-  echo "▶      代理相关脚本:"
-  echo "  1.       ArgoX"
-  echo "  2.       涌哥SB脚本"
-  echo "  3.       x-ui"
-  echo "  4.       Warp"
-  echo "  0.       返回上一级"
+  echo "▶代理相关脚本:"
+  echo "  1. ArgoX"
+  echo "  2. 涌哥SB脚本"
+  echo "  3. x-ui"
+  echo "  4. Warp"
+  echo "  0. 返回上一级"
   read -p "请输入选择: " sub_choice
   case $sub_choice in
     1) clear ;bash <(wget -qO- https://raw.githubusercontent.com/fscarmen/argox/main/argox.sh) ;;
@@ -74,47 +74,47 @@ proxy_scripts() {
   esac
 }
 
-# 6.       测试脚本合集
+# 6. 测试脚本合集
 test_scripts() {
   clear
-  echo "▶       测试脚本合集:"
-  echo "  1.       融合怪"
-  echo "  2.       流媒体及IP质量测试-常用版本"
-  echo "  3.       流媒体及IP质量测试-原生检测脚本"
-  echo "  4.       流媒体及IP质量测试-准确度最高"
-  echo "  5.       流媒体及IP质量测试-IP质量体检脚本"
-  echo "  6.       Speedtest(测速脚本)"
-  echo "  7.       Taier(测速脚本)"
-  echo "  8.       hyperspeed(测速脚本)"
-  echo "  9.       全球测速(测速脚本)"
-  echo " 10.       直接显示回程（小白用这个）"
-  echo " 11.       回程详细测试（推荐）"
-  echo "  0.       返回上一级"
+  echo "▶ 测试脚本合集:"
+  echo "  1. 融合怪"
+  echo "  2. 流媒体及IP质量测试-常用版本"
+  echo "  3. 流媒体及IP质量测试-原生检测脚本"
+  echo "  4. 流媒体及IP质量测试-准确度最高"
+  echo "  5. 流媒体及IP质量测试-IP质量体检脚本"
+  echo "  6. Speedtest(测速脚本)"
+  echo "  7. Taier(测速脚本)"
+  echo "  8. hyperspeed(测速脚本)"
+  echo "  9. 全球测速(测速脚本)"
+  echo " 10. 直接显示回程（小白用这个）"
+  echo " 11. 回程详细测试（推荐）"
+  echo "  0. 返回上一级"
   read -p "请输入选择: " sub_choice
   case $sub_choice in
-    1) clear ;bash <(wget -qO- --no-check-certificate https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh) ;;
-    2) clear ;bash <(curl -L -s check.unlock.media) ;;
-    3) clear ;bash <(curl -sL Media.Check.Place) ;;
-    4) clear ;bash <(curl -L -s https://github.com/1-stream/RegionRestrictionCheck/raw/main/check.sh) ;;
-    5) clear ;bash <(curl -sL IP.Check.Place) ;;
-    6) clear ;bash <(curl -sL bash.icu/speedtest) ;;
-    7) clear ;bash <(curl -sL res.yserver.ink/taier.sh) ;;
-    8) clear ;bash <(curl -Lso- https://bench.im/hyperspeed) ;;
-    9) clear ;curl -sL network-speed.xyz | bash ;;
-    10) clear ;bash <(curl -sSL https://raw.githubusercontent.com/ludashi2020/backtrace/main/install.sh) ;;
-    11) clear ;wget -N --no-check-certificate https://raw.githubusercontent.com/Chennhaoo/Shell_Bash/master/AutoTrace.sh && chmod +x AutoTrace.sh && bash AutoTrace.sh ;;
+    1) clear ;bash <(wget -qO- --no-check-certificate https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    2) clear ;bash <(curl -L -s check.unlock.media) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    3) clear ;bash <(curl -sL Media.Check.Place) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    4) clear ;bash <(curl -L -s https://github.com/1-stream/RegionRestrictionCheck/raw/main/check.sh) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    5) clear ;bash <(curl -sL IP.Check.Place) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    6) clear ;bash <(curl -sL bash.icu/speedtest) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    7) clear ;bash <(curl -sL res.yserver.ink/taier.sh) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    8) clear ;bash <(curl -Lso- https://bench.im/hyperspeed) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    9) clear ;curl -sL network-speed.xyz | bash  && echo -e "清理完成\n按回车返回菜单..."; read;;
+    10) clear ;bash <(curl -sSL https://raw.githubusercontent.com/ludashi2020/backtrace/main/install.sh) && echo -e "清理完成\n按回车返回菜单..."; read ;;
+    11) clear ;wget -N --no-check-certificate https://raw.githubusercontent.com/Chennhaoo/Shell_Bash/master/AutoTrace.sh && chmod +x AutoTrace.sh && bash AutoTrace.sh && echo -e "清理完成\n按回车返回菜单..."; read ;;
     0) clear ;main_menu ;;
     *) echo "输入错误，请按回车键重试"; read; test_scripts ;;
   esac
 }
 
-# 7.       综合功能脚本
+# 7. 综合功能脚本
 integrated_scripts() {
   clear
-  echo "▶      综合功能脚本:"
-  echo "  1.       科技lion"
-  echo "  2.       SKY-BOX"
-  echo "  0.       返回上一级"
+  echo "▶综合功能脚本:"
+  echo "  1. 科技lion"
+  echo "  2. SKY-BOX"
+  echo "  0. 返回上一级"
   read -p "请输入选择: " sub_choice
   case $sub_choice in
     1) clear ;curl -sS -O https://kejilion.pro/kejilion.sh && chmod +x kejilion.sh && ./kejilion.sh ;;
@@ -124,17 +124,17 @@ integrated_scripts() {
   esac
 }
 
-# 8.       一键安装常用环境及软件
+# 8. 一键安装常用环境及软件
 software_install() {
   clear
   echo "▶     一键安装常用环境及软件:"
-  echo "  1.       docker"
-  echo "  2.       gost"
-  echo "  3.       极光面板"
-  echo "  4.       哪吒监控V0"
-  echo "  5.       哪吒监控V1"
-  echo "  6.       宝塔"
-  echo "  0.       返回上一级"
+  echo "  1. docker"
+  echo "  2. gost"
+  echo "  3. 极光面板"
+  echo "  4. 哪吒监控V0"
+  echo "  5. 哪吒监控V1"
+  echo "  6. 宝塔"
+  echo "  0. 返回上一级"
   read -p "请输入选择: " sub_choice
   case $sub_choice in
     1) clear ;curl -sSL https://get.daocloud.io/docker | sh ;;
@@ -148,25 +148,25 @@ software_install() {
   esac
 }
 
-# 9.       系统功能
+# 9. 系统功能
 system_functions() {
   clear
-  echo "▶       系统功能:"
-  echo "  1.       系统信息"
-  echo "  2.       系统清理"
-  echo "  3.       系统更新"
-  echo "  4.       安装常用工具安curl、sudo、wget、net-tools、ufw"
-  echo "  5.       添加z、zohar脚本快速启动"
-  echo "  6.       删除z、zohar脚本快速启动"
-  echo "  0.       返回上一级"
+  echo "▶ 系统功能:"
+  echo "  1. 系统信息"
+  echo "  2. 系统清理"
+  echo "  3. 系统更新"
+  echo "  4. 安装常用工具安curl、sudo、wget、net-tools、ufw"
+  echo "  5. 添加z、zohar脚本快速启动"
+  echo "  6. 删除z、zohar脚本快速启动"
+  echo "  0. 返回上一级"
   read -p "请输入选择: " sub_choice
   case $sub_choice in
     1) clear ; bash <(curl -sL yabs.sh) ;;
-    2) clear ; apt-get autoremove -y && apt-get clean && echo "清理完成";;
-    3) clear ; apt-get update && apt-get upgrade -y && echo "更新完成";;
-    4) apt update -y  && apt upgrade -y && apt install -y curl  && apt-get install sudo && apt install wget && apt install net-tools && apt install ufw && echo "安装完成";;
-	5) clear ; add_alias;;
-	6) clear ; remove_alias;;
+    2) clear ; apt-get autoremove -y && apt-get clean && echo "清理完成" && echo -e "清理完成\n按回车返回菜单..."; read;;
+    3) clear ; apt-get update && apt-get upgrade -y && echo "更新完成" && echo -e "更新完成\n按回车返回菜单..."; read;;
+    4) apt update -y  && apt upgrade -y && apt install -y curl  && apt-get install sudo && apt install wget && apt install net-tools && apt install ufw && echo "安装完成" && echo -e "安装完成\n按回车返回菜单..."; read;;
+	  5) clear ; add_alias && echo -e "\n按回车返回菜单..."; read;;
+	  6) clear ; remove_alias && echo -e "\n按回车返回菜单..."; read;;
     0) main_menu ;;
     *) echo "输入错误，请按回车键重试"; read; system_functions ;;
   esac
